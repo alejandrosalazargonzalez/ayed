@@ -23,6 +23,11 @@ rational_t::rational_t(const int n, const int d)
 
 // pauta de estilo [83]: tipo retornado en línea anterior al método
 //getter del numerador
+
+// Destructor de la clase rational_t
+rational_t::~rational_t() {}
+
+
 inline
 int
 rational_t::get_num() const
@@ -147,7 +152,9 @@ rational_t::divide(const rational_t& r) const
 rational_t
 operator+(const rational_t& a, const rational_t& b)
 {
-  // rellenar código
+  int num = a.get_num() * b.get_den() + a.get_den() * b.get_num();
+  int den = a.get_den() * b.get_den();
+  return rational_t(num, den);
 }
 
 
@@ -155,7 +162,9 @@ operator+(const rational_t& a, const rational_t& b)
 rational_t
 operator-(const rational_t& a, const rational_t& b)
 {
-  // rellenar código
+  int num = a.get_num() * b.get_den() - a.get_den() * b.get_num();
+  int den =  a.get_den() * b.get_den();
+  return rational_t(num, den);
 }
 
 
@@ -163,7 +172,9 @@ operator-(const rational_t& a, const rational_t& b)
 rational_t
 operator*(const rational_t& a, const rational_t& b)
 {
-  // rellenar código
+  int num = a.get_num() * b.get_num();
+  int den = a.get_den() * b.get_den();
+  return rational_t(num, den);
 }
 
 
@@ -171,7 +182,9 @@ operator*(const rational_t& a, const rational_t& b)
 rational_t
 operator/(const rational_t& a, const rational_t& b)
 {
-  // rellenar código
+  int num = a.get_num() * b.get_den();
+  int den = a.get_den() * b.get_num();
+  return rational_t(num, den);
 }
 
 

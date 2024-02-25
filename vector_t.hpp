@@ -12,6 +12,7 @@
 
 #include <iostream>
 #include <cassert>
+#include <vector>
 
 using namespace std;
 
@@ -200,7 +201,17 @@ template<class T>
 T
 scal_prod(const vector_t<T>& v, const vector_t<T>& w)
 {
-  // rellenar código
+    // Verificar que los vectores tengan la misma dimensión
+    if (v.size() != w.size()) {
+        sdt::cout << "los vectores no tienen la misma dimensión\n";
+        //throw std::invalid_argument;
+    }
+
+    T result = T();  // Inicializar el resultado en 0
+    for (size_t i = 0; i < v.size(); ++i) {
+        result = result + v[i] * w[i];
+    }
+    return result;
 }
 
 
@@ -208,5 +219,15 @@ scal_prod(const vector_t<T>& v, const vector_t<T>& w)
 double
 scal_prod(const vector_t<rational_t>& v, const vector_t<rational_t>& w)
 {
-  // rellenar código 
-}
+    //verificar que los vectores tienen el mismo tamaño
+    if (v.size() != w.size()) {
+        std::cout<<"Los vectores deben tener la misma dimensión.\n"
+        //throw std::invalid_argument("Los vectores deben tener la misma dimensión.");
+    }
+
+    double result = 0;
+    for (size_t i = 0; i < v.size(); ++i) {
+        result += v[i].toDouble() * w[i].toDouble();
+    }
+    return result;
+    }
